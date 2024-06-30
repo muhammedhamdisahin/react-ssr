@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    setNumber((a) => a + 11);
+  }, []);
+
+  const arttir = () => {
+    setNumber((prev) => prev + 1);
+  };
+
+  const azalt = () => {
+    setNumber((prev) => prev - 1);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>{number}</div>
+      <button onClick={arttir}>+</button>
+      <button onClick={azalt}>-</button>
+      <div>Burası SSR ile gelmiştir</div>
     </div>
   );
 }
